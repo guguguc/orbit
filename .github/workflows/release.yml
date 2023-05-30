@@ -16,13 +16,13 @@ concurrency:
 
 jobs:
   build-debian-package:
-    runs-on: ubuntu-22.04
+    runs-on: buildjet-64vcpu-ubuntu-2204
     timeout-minutes: 180
     permissions:
       contents: write
     env:
-      CCACHE_BASEDIR: "${GITHUB_WORKSPACE}"
-      CCACHE_DIR: "${GITHUB_WORKSPACE}/.ccache"
+      CCACHE_BASEDIR: "~"
+      CCACHE_DIR: "~/.ccache"
       CCACHE_COMPRESS: "true"
       CCACHE_COMPRESSLEVEL: "6"
       CCACHE_MAXSIZE: "400M"
@@ -50,7 +50,7 @@ jobs:
         id: ccache_timestamp
         run: echo "timestamp=$(date +%m-%d-%Y--%H:%M:%S)" >> $GITHUB_OUTPUT
       - name: Setup CCache files
-        uses: actions/cache@v3
+        uses: buildjet/cache@v3
         with:
           path: .ccache
           key: debian-ccache-${{ steps.ccache_timestamp.outputs.timestamp }}
