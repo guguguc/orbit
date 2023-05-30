@@ -74,6 +74,7 @@ jobs:
         if: startsWith(matrix.config.os, 'ubuntu')
         run: |
            sudo apt update &&                             \
+           cat /proc/cpuinfo | grep processor | wc -l     \
            sudo apt install --yes --no-install-recommends \
            build-essential                                \
            clang-tidy-14                                  \
