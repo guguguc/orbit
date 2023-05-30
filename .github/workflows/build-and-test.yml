@@ -34,7 +34,7 @@ concurrency:
 jobs:
   job:
     name: ${{ matrix.config.build_type }}.${{ matrix.config.cc }}.build-and-test-${{ matrix.config.os }}
-    runs-on: ${{ matrix.config.os }}
+    runs-on:  buildjet-4vcpu-ubuntu-2204
     timeout-minutes: 360
     strategy:
       fail-fast: false
@@ -132,7 +132,7 @@ jobs:
         run: echo "timestamp=$(date +%m-%d-%Y--%H:%M:%S)" >> $GITHUB_OUTPUT
         shell: bash
       - name: Setup CCache Files
-        uses: actions/cache@v3
+        uses: buildjet/cache@v3
         with:
           path: |
             .ccache
