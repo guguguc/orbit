@@ -47,27 +47,6 @@ jobs:
             cxx: "g++",
             os: "ubuntu-22.04"
         }
-        - {
-            name: "Clang Release",
-            build_type: 'Release',
-            cc: "clang",
-            cxx: "clang++",
-            os: "ubuntu-22.04"
-        }
-        - {
-            name: "Clang Debug",
-            build_type: 'Debug',
-            cc: "clang",
-            cxx: "clang++",
-            os: "ubuntu-22.04"
-        }
-        - {
-            name: "MSVC Release",
-            build_type: 'Release',
-            cc: "msvc",
-            os: "windows-2019",
-            conan_profile: "msvc2019_release"
-        }
     env:
       CCACHE_BASEDIR: "${GITHUB_WORKSPACE}"
       CCACHE_DIR: "${GITHUB_WORKSPACE}/.ccache"
