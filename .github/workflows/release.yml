@@ -21,8 +21,8 @@ jobs:
     permissions:
       contents: write
     env:
-      CCACHE_BASEDIR: "~"
-      CCACHE_DIR: "~/.ccache"
+      CCACHE_BASEDIR: "${GITHUB_WORKSPACE}"
+      CCACHE_DIR: "${GITHUB_WORKSPACE}/.ccache"
       CCACHE_COMPRESS: "true"
       CCACHE_COMPRESSLEVEL: "6"
       CCACHE_MAXSIZE: "400M"
