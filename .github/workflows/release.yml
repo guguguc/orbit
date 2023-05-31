@@ -67,7 +67,7 @@ jobs:
         working-directory: ./workspace
         env:
           EMAIL: orbitprofiler-eng@google.com
-        run: gbp dch --since=$(git describe --always --match "nightly*" --abbrev=0) --new-version=${{ steps.generate-version-string.outputs.version_string }} --ignore-branch
+        run: gbp dch -b --since=$(git describe --always --match "nightly*" --abbrev=0) --new-version=${{ steps.generate-version-string.outputs.version_string }} --ignore-branch
       - name: Build Debian package
         working-directory: ./workspace
         run: |
